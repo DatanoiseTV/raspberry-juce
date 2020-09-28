@@ -63,7 +63,7 @@ RUN rpdo DEBIAN_FRONTEND=noninteractive apt-get install -y \
         libxcursor-dev \
         libasound2-dev \
         freeglut3-dev \
-        libcurl3-dev
+        libcurl3-dev \
         libx11-dev \
         mesa-common-dev \
         libxcomposite-dev \

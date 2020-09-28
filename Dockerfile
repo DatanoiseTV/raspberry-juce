@@ -54,7 +54,8 @@ RUN curl -Ls http://upload.vina-host.com/get/r8MTB/raspbian.2020.09.29.tar.xz \
                 symlinks \
         && symlinks -cors /'
 
-RUN rpdo DEBIAN_FRONTEND=noninteractive apt-get install -y \
+RUN  chroot $SYSROOT $QEMU_PATH /bin/sh -c '\
+        DEBIAN_FRONTEND=noninteractive apt-get install -y \
         libfreetype6-dev \
         libxinerama-dev \
         libxrandr-dev \
@@ -65,7 +66,7 @@ RUN rpdo DEBIAN_FRONTEND=noninteractive apt-get install -y \
         libx11-dev \
         mesa-common-dev \
         libxcomposite-dev \
-        libxcursor-dev
+        libxcursor-dev'
 
 #RUN sudo ln -s /rpxc/local/lib/libwiringPi.so.2.36 /rpxc/lib/libwiringPi.so
 #RUN sudo ln -s /rpxc/local/lib/libwiringPiDev.so.2.36 /rpxc/lib/libwiringPiDev.so

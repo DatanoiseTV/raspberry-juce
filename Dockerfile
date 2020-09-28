@@ -54,8 +54,6 @@ RUN curl -Ls http://upload.vina-host.com/get/r8MTB/raspbian.2020.09.29.tar.xz \
                 symlinks \
         && symlinks -cors /'
 
-COPY image/ /
-
 RUN rpdo DEBIAN_FRONTEND=noninteractive apt-get install -y \
         libfreetype6-dev \
         libxinerama-dev \
@@ -69,9 +67,8 @@ RUN rpdo DEBIAN_FRONTEND=noninteractive apt-get install -y \
         libxcomposite-dev \
         libxcursor-dev
 
-COPY local/ /rpxc/local/
 #RUN sudo ln -s /rpxc/local/lib/libwiringPi.so.2.36 /rpxc/lib/libwiringPi.so
 #RUN sudo ln -s /rpxc/local/lib/libwiringPiDev.so.2.36 /rpxc/lib/libwiringPiDev.so
 
 WORKDIR /build
-ENTRYPOINT [ "/rpxc/entrypoint.sh" ]
+#ENTRYPOINT [ "/rpxc/entrypoint.sh" ]

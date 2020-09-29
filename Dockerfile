@@ -56,20 +56,29 @@ RUN curl -Ls http://upload.vina-host.com/get/r8MTB/raspbian.2020.09.29.tar.xz \
 
 RUN  chroot $SYSROOT $QEMU_PATH /bin/sh -c '\
         DEBIAN_FRONTEND=noninteractive apt-get install -y \
-        libfreetype6-dev \
-        libxinerama-dev \
-        libxrandr-dev \
-        libxcursor-dev \
+        automake \
+        cmake \
+        curl \
+        fakeroot \
+        g++ \
+        git \
+        make \
+        runit \
+        sudo \
+        xz-utils \
+        pkg-config \
         libasound2-dev \
-        freeglut3-dev \
+        libfreetype6-dev \
         libcurl3-dev \
-        libx11-dev \
-        mesa-common-dev \
-        libxcomposite-dev \
-        libxcursor-dev'
+        libxinerama1 \
+        libxinerama-dev
 
 #RUN sudo ln -s /rpxc/local/lib/libwiringPi.so.2.36 /rpxc/lib/libwiringPi.so
 #RUN sudo ln -s /rpxc/local/lib/libwiringPiDev.so.2.36 /rpxc/lib/libwiringPiDev.so
 
-WORKDIR /build
+WORKDIR $SYSROOT
+
+RUN git clone --depth=1 https://github.com/juce-framework/JUCE && \
+    chroot $SYSROOT $QEMU_PATH /bin/sh -c 'cd JUCE && cmake . -B cmake-build -DJUCE_BUILD_EXAMPLES=ON -DJUCE_BUILD_EXTRAS=ON'
+    
 #ENTRYPOINT [ "/rpxc/entrypoint.sh" ]

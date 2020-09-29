@@ -71,7 +71,7 @@ RUN  chroot $SYSROOT $QEMU_PATH /bin/sh -c '\
         libfreetype6-dev \
         libcurl3-dev \
         libxinerama1 \
-        libxinerama-dev
+        libxinerama-dev'
 
 #RUN sudo ln -s /rpxc/local/lib/libwiringPi.so.2.36 /rpxc/lib/libwiringPi.so
 #RUN sudo ln -s /rpxc/local/lib/libwiringPiDev.so.2.36 /rpxc/lib/libwiringPiDev.so
